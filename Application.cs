@@ -12,22 +12,25 @@ namespace GameIdeaGenerator
         private Genre m_Genre;
         private Setting m_Setting;
         private Niche m_Niche;
+        private Multiplayer m_MP;
 
         public bool genreRandom { get; private set; }
         public bool settingRandom { get; private set; }
         public bool nicheRandom { get; private set; }
+        public bool mpRandom { get; private set; }
 
         private void ShowHelp()
         {
             Console.WriteLine($"Usage: {AppDomain.CurrentDomain.FriendlyName} [(optional) options]");
             Console.WriteLine($"\nOptions:");
-            Console.WriteLine($"\t--genre=GENRE    \t\tSet the genre of the idea");
-            Console.WriteLine($"\t--setting=SETTING\t\tSet the setting of the idea");
-            Console.WriteLine($"\t--niche=SETTING  \t\tSet the niche of the idea");
+            Console.WriteLine($"\t--genre=GENRE      \t\tSet the genre of the idea");
+            Console.WriteLine($"\t--setting=SETTING  \t\tSet the setting of the idea");
+            Console.WriteLine($"\t--niche=SETTING    \t\tSet the niche of the idea");
+            Console.WriteLine($"\t--multiplayer=BOOL \t\tSet the niche of the idea");
             Console.WriteLine($"\nViewing:");
-            Console.WriteLine($"\t--genres         \t\tShow all genre's");
-            Console.WriteLine($"\t--settings       \t\tShow all setting's");
-            Console.WriteLine($"\t--niches         \t\tShow all niche's");
+            Console.WriteLine($"\t--genres           \t\tShow all genre's");
+            Console.WriteLine($"\t--settings         \t\tShow all setting's");
+            Console.WriteLine($"\t--niches           \t\tShow all niche's");
         }
 
         public void StartApplication(string[] args)
@@ -35,10 +38,12 @@ namespace GameIdeaGenerator
             m_Genre = new Genre();
             m_Setting = new Setting();
             m_Niche = new Niche();
+            m_MP = new Multiplayer();
 
             genreRandom = true;
             settingRandom = true;
             nicheRandom = true;
+            mpRandom = true;
             foreach (string item in args)
             {
                 if (item.StartsWith("--help"))
@@ -79,6 +84,18 @@ namespace GameIdeaGenerator
                     nicheRandom = false;
                     m_Niche.PickNiche(item);
                 }
+                else if (item.StartsWith("--mulitplayer="))
+                {
+                    mpRandom = false;
+                    if(item.EndsWith("true"))
+                    {
+                        m_MP.SetMultiplayer(true);
+                    }
+                    else
+                    {
+                        m_MP.SetMultiplayer(false);
+                    }
+                }
             }
 
             if(genreRandom == true)
@@ -92,6 +109,10 @@ namespace GameIdeaGenerator
             if (nicheRandom == true)
             {
                 m_Niche.RandomNiche();
+            }
+            if (mpRandom == true)
+            {
+                m_MP.RandomMultiplayer();
             }
         }
     }
