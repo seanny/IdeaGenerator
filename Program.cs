@@ -1,4 +1,9 @@
-﻿using System;
+﻿//
+//  Copyright (C) 2019 Outlaw Games Studio.
+//
+//  This document is licensed under MIT License by Outlaw Games Studio.
+//
+using System;
 
 namespace GameIdeaGenerator
 {
