@@ -26,7 +26,7 @@ namespace GameIdeaGenerator
             Console.WriteLine($"\t--genre=GENRE      \t\tSet the genre of the idea");
             Console.WriteLine($"\t--setting=SETTING  \t\tSet the setting of the idea");
             Console.WriteLine($"\t--niche=SETTING    \t\tSet the niche of the idea");
-            Console.WriteLine($"\t--multiplayer=BOOL \t\tSet the niche of the idea");
+            Console.WriteLine($"\t--multiplayer=BOOL \t\tSet if multiplayer or not (True/False)");
             Console.WriteLine($"\nViewing:");
             Console.WriteLine($"\t--genres           \t\tShow all genre's");
             Console.WriteLine($"\t--settings         \t\tShow all setting's");
